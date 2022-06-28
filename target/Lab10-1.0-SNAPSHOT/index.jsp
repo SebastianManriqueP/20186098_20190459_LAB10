@@ -36,7 +36,8 @@
         </div>
         <div class="btn-container">
             <button type="submit" class="btn btn-outline-primary" style="border-radius: 20px;">Ingresar</button>
-            <a href="#modal1" class="btn-recovery" style="color: blue;"><u>Soy nuevo y quiero registrarme</u></a>
+            <br/>
+            <a type="button" class="btn btn-light" style="color: cornflowerblue " href="<%=request.getContextPath()%>/CrearServlet"><u>Soy nuevo y quiero registrarme</u></a>
         </div>
     </div>
 </form>

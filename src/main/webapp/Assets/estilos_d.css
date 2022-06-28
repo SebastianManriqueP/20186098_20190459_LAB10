@@ -12,14 +12,6 @@ body{
     
 }
 
-.banner-container{
-    display: flex;
-    flex-direction: column;
-    background: url(img/fondo_catolica1.jpg) no-repeat;
-    min-height: 81vh;
-    background-size: 100% 100%;
-    background-position: center;
-}
 .banner-title{
     display: flex;
     justify-content: center;
