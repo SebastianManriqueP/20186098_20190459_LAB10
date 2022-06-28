@@ -13,73 +13,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Registro</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="Assets/estilos_d.css">
 </head>
 <body>
-<div class="form-login " style="width: 80%;margin-left: 10%;">
-<form class="row g-3">
-    <div class="col-md-4">
-        <label for="validationServer01" class="form-label">First name</label>
-        <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>
-    <div class="col-md-4">
-        <label for="validationServer02" class="form-label">Last name</label>
-        <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>
-    <div class="col-md-4">
-        <label for="validationServerUsername" class="form-label">Username</label>
-        <div class="input-group has-validation">
-            <span class="input-group-text" id="inputGroupPrepend3">@</span>
-            <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
-            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                Please choose a username.
+<form class="form-login" method="post" action="<%=request.getContextPath()%>/CrearServlet" style="width: 80%; margin-left: 10%; margin-top: 3%;">
+    <div class="container">
+        <div class="row">
+            <div class="col"style="margin-left: -1%;">
+                <div>
+                    <img src="Assets/img/logo.png" width="170" height="110" style="margin-left: 3%;margin-top:3%;border-radius: 3px;">
+                </div>
+            </div>
+            <div class="col" style="margin-right: -1%;">
+                <div class="close-container">
+                    <a href="<%=request.getContextPath()%>/IndexServlet" class="close-login" style="background-color: #484848;width: 10%;height:35px">X</a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <label for="validationServer03" class="form-label">City</label>
-        <input type="text" class="form-control is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback" required>
-        <div id="validationServer03Feedback" class="invalid-feedback">
-            Please provide a valid city.
+
+    <div class="login-container" style="margin-top: -2%;">
+        <div class="login-header">
+            <h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;color: darkgreen;">Televiajes PUCP</h3>
+            <h2 style="margin-top: 1%;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: rgb(16, 16, 115);">Registro</h2>
         </div>
-    </div>
-    <div class="col-md-3">
-        <label for="validationServer04" class="form-label">State</label>
-        <select class="form-select is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback" required>
-            <option selected disabled value="">Choose...</option>
-            <option>...</option>
-        </select>
-        <div id="validationServer04Feedback" class="invalid-feedback">
-            Please select a valid state.
-        </div>
-    </div>
-    <div class="col-md-3">
-        <label for="validationServer05" class="form-label">Zip</label>
-        <input type="text" class="form-control is-invalid" id="validationServer05" aria-describedby="validationServer05Feedback" required>
-        <div id="validationServer05Feedback" class="invalid-feedback">
-            Please provide a valid zip.
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="form-check">
-            <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
-            <label class="form-check-label" for="invalidCheck3">
-                Agree to terms and conditions
-            </label>
-            <div id="invalidCheck3Feedback" class="invalid-feedback">
-                You must agree before submitting.
+        <div class="container" style="margin-top: 3%;">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Nombres: (*)</label>
+                        <input type="text" name = "nombre"class="form-control" aria-describedby="emailHelp" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Apellidos: (*)</label>
+                        <input type="text"  name = "apellido"class="form-control" aria-describedby="emailHelp" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label  class="form-label" >Edad: (*)</label>
+                        <input type="number" name = "edad" class="form-control" min="18" max="30" title="ingrese su Edad" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label  class="form-label">Código PUCP: (*)</label>
+                        <input type="tel"  name = "codigo"class="form-control" maxlength="8" minlength="8" pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" title="ingrese su código PUCP" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label  class="form-label" >Correo: (*)</label>
+                        <input type="email"  name = "correo"class="form-control"  title="ingrese su Correo" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Especialidad: (*)</label>
+                        <select
+                                class="form-select form-select-sm"
+                                name="especialidad"
+                                aria-label=".form-select-sm example"
+                        >
+                            <option disabled>
+                                Selecciona el género
+                            </option>
+                            <option value="1">
+                                Ingeniería de Telecomunicaciones
+                            </option>
+                            <option value="2">
+                                Ingeniería Electrónica
+                            </option>
+                            <option value="3">
+                                Ingeniería Informática
+                            </option>
+                            <option value="4">
+                                Ingeniería Industrial
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Ingrese nueva contraseña:</label>
+                        <input type="password" name="contra" class="form-control" id="exampleInputPassword1">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="exampleInputPassword2" class="form-label">Confirmar nueva contraseña:</label>
+                        <input type="password" name="copia"class="form-control" id="exampleInputPassword2">
+                    </div>
+                </div>
+                <script>
+
+                </script>
             </div>
         </div>
-    </div>
-    <div class="col-12">
-        <button class="btn btn-primary" type="submit">Submit form</button>
+        <div class="btn-container">
+            <button type="submit" class="btn btn-success" style="width: 280px;" >Continuar</button>
+        </div>
+
     </div>
 </form>
-</div>
 </body>
 </html>

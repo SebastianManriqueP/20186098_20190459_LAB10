@@ -215,7 +215,7 @@ body{
 }
 .close-login{
     display: flex;
-    background: #d12d2d;
+    background: black;
     color: #FFFFFF;
     line-height: 25px;
     text-align: center;

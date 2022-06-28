@@ -5,6 +5,7 @@
   Time: 19:46
   To change this template use File | Settings | File Templates.
 --%>
+<jsp:useBean id="indicador" scope="session" type="java.lang.String" class="java.lang.String"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +21,7 @@
     <title>Iniciar Sesión Agencia</title>
 </head>
 <body>
-<form class="form-login" style="margin-top: 4%;background-color: black;">
+<form method="post" action="<%=request.getContextPath()%>/LoginServlet" class="form-login" style="margin-top: 4%;background-color: black;">
     <div class="container">
         <img src="Assets/img/logo.png" height="230px" width="270px" style="margin-top: 20px;margin-left: 240px;">
     </div>
@@ -29,17 +30,25 @@
             <h2 style="margin-top: 1%;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:white;">Bienvenido Televiajero</h2>
         </div>
         <div class="mb-3">
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Usuario">
+            <input type="email" name="correo" class="form-control" id="exampleFormControlInput1" placeholder="Usuario">
         </div>
         <div class="mb-3">
-            <input type="password" class="form-control" placeholder="Contraseña">
+            <input type="password" name = "pass" class="form-control" placeholder="Contraseña">
         </div>
+        <%if (session.getAttribute("indicador").equals("error")){%>
+        </br>
+        <div class="text-danger nb-2">
+            Error en usuario o contraseña!!!
+        </div>
+        <%session.removeAttribute("indicador");%>
+        <%}%>
         <div class="btn-container">
-            <button type="submit" class="btn btn-outline-primary" style="border-radius: 20px;">Ingresar</button>
+            <button type="submit" class="btn btn-success" style="border-radius: 20px;">Ingresar</button>
             <br/>
-            <a type="button" class="btn btn-light" style="color: cornflowerblue " href="<%=request.getContextPath()%>/CrearServlet"><u>Soy nuevo y quiero registrarme</u></a>
+            <a type="button" class="btn btn-secondary"   href="<%=request.getContextPath()%>/CrearServlet">Soy nuevo y quiero registrarme</a>
         </div>
     </div>
 </form>
+
 </body>
 </html>
