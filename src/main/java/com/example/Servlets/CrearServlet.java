@@ -1,4 +1,4 @@
-package com.example.lab10.Servlets;
+package com.example.Servlets;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
