@@ -151,7 +151,6 @@ public class ViajeDao {
 
     }
 
-
     public int generarId() {
         double id = 10000000 + Math.random() * 90000000;
         return (int) id;
@@ -165,19 +164,18 @@ public class ViajeDao {
             throw new RuntimeException(e);
         }
 
-        String sql = "INSERT INTO viaje (idViaje, fecha_reserva, fecha_viaje, ciudad_origen, ciudad_destino, num_boletos, costo_total, idEmpresa, idUsuario) VALUES (?, NOW(), ? , ? , ?, ?, ?, ?, ?);";
+        String sql = "UPDATE viaje SET fecha_viaje = ?, ciudad_origen = ? , ciudad_destino = ?, num_boletos = ?, costo_total = ?, idEmpresa = ? WHERE (idViaje = ?);";
 
         try (Connection connection = DriverManager.getConnection(url, user, pass);
              PreparedStatement pstmt = connection.prepareStatement(sql);) {
 
-
-            pstmt.setString(1, String.valueOf(idVuelo));
-            pstmt.setString(2,fechaVuelo);
-            pstmt.setString(3,origen);
-            pstmt.setString(4,destino);
-            pstmt.setString(5,boletos);
-            pstmt.setString(6,costo);
-            pstmt.setString(7,idEmpresa);
+            pstmt.setString(1,fechaVuelo);
+            pstmt.setString(2,origen);
+            pstmt.setString(3,destino);
+            pstmt.setString(4,boletos);
+            pstmt.setString(5,costo);
+            pstmt.setString(6,idEmpresa);
+            pstmt.setString(7, String.valueOf(idVuelo));
             pstmt.executeUpdate();
 
         } catch (SQLException e) {

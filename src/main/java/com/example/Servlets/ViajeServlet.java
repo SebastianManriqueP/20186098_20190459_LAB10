@@ -62,7 +62,7 @@ public class ViajeServlet extends HttpServlet {
                 String empresaSeguro = request.getParameter("seguro");
                 String boletos = request.getParameter("boletos");
                 String costo = request.getParameter("costo");
-                viajeDao.crearVuelo("1",fecha,origen,destino,empresaSeguro,boletos,costo);
+                viajeDao.editarVuelo(id,fecha, origen, destino,empresaSeguro,boletos,costo);
                 response.sendRedirect(request.getContextPath() + "/ViajeServlet");
 
             }
