@@ -30,6 +30,7 @@ public class LoginDao {
                     usuario.setCorreo_pucp(rs.getString(6));
                     usuario.setNombre(rs.getString(2));
                     usuario.setApellido(rs.getString(3));
+
                 }
             }
 

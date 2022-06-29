@@ -3,6 +3,7 @@ package com.example.Servlets;
 
 
 import com.example.Beans.Usuario;
+import com.example.Daos.LoginDao;
 import com.example.Daos.ViajeDao;
 
 import javax.servlet.RequestDispatcher;
@@ -78,6 +79,19 @@ public class ViajeServlet extends HttpServlet {
 
 
                 }
+                case"borrar"->{
+                    LoginDao loginDao = new LoginDao();
+                    Usuario usu = loginDao.validar(u.getCorreo_pucp(),request.getParameter("contra"));
+                    if(usu!=null){
+                        String id =request.getParameter("viajeId");
+                        viajeDao.borrar(id);
+                        response.sendRedirect(request.getContextPath() + "/ViajeServlet");
+                    }else{
+                        request.getSession().setAttribute("errorBorrar","errorBorrar");
+                        response.sendRedirect(request.getContextPath() + "/ViajeServlet");
+                    }
+                }
+
             }
         }else{
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");

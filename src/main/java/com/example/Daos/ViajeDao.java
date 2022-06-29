@@ -183,6 +183,28 @@ public class ViajeDao {
         }
 
     }
+    public void borrar(String idVuelo) {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        String sql = "DELETE FROM viaje WHERE (idViaje = ?);";
+
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             PreparedStatement pstmt = connection.prepareStatement(sql);) {
+
+            pstmt.setString(1, idVuelo);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 
 
 }
