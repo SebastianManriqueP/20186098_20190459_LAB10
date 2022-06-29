@@ -9,14 +9,14 @@ public class LoginDao {
         Usuario usuario = null;
         String user = "root";
         String pass = "root";
-        String url = "jdbc:mysql://localhost:3306/cultura_box_pucp";
+        String url = "jdbc:mysql://localhost:3306/lab10";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        String sql = "Select * from usuario where correo_pucp =? and contrasenha=sha2(?,256)";
+        String sql = "Select * from usuario where correo_pucp =? and contrasenha=sha2(?,256) and idespecialidad=1";
 
         try (Connection connection = DriverManager.getConnection(url, user, pass);
              PreparedStatement pstmt = connection.prepareStatement(sql);) {
@@ -28,6 +28,8 @@ public class LoginDao {
                     usuario = new Usuario();
                     usuario.setId(rs.getInt(1));
                     usuario.setCorreo_pucp(rs.getString(6));
+                    usuario.setNombre(rs.getString(2));
+                    usuario.setApellido(rs.getString(3));
                 }
             }
 

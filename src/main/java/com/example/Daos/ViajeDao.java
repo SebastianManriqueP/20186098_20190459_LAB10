@@ -25,7 +25,7 @@ public class ViajeDao {
         try (Connection connection = DriverManager.getConnection(url, user, pass);
              PreparedStatement pstmt = connection.prepareStatement(sql);) {
 
-            pstmt.setString(1,idUser);
+            pstmt.setInt(1,Integer.valueOf(idUser));
 
             try(ResultSet rs = pstmt.executeQuery();){
                 while(rs.next()){
@@ -109,10 +109,10 @@ public class ViajeDao {
             pstmt.setString(2,fechaVuelo);
             pstmt.setString(3,origen);
             pstmt.setString(4,destino);
-            pstmt.setString(5,boletos);
-            pstmt.setString(6,costo);
-            pstmt.setString(7,idEmpresa);
-            pstmt.setString(8,idUser);
+            pstmt.setInt(5,Integer.valueOf(boletos));
+            pstmt.setFloat(6,Float.valueOf(costo));
+            pstmt.setInt(7,Integer.valueOf(idEmpresa));
+            pstmt.setInt(8, Integer.valueOf(idUser));
             pstmt.executeUpdate();
 
         } catch (SQLException e) {

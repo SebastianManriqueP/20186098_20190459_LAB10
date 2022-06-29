@@ -5,6 +5,7 @@
   Time: 23:24
   To change this template use File | Settings | File Templates.
 --%>
+<jsp:useBean id="indicador2" scope="session" type="java.lang.String" class="java.lang.String"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -59,7 +60,7 @@
                 <div class="col">
                     <div class="mb-3">
                         <label  class="form-label" >Edad: (*)</label>
-                        <input type="number" name = "edad" class="form-control" min="18" max="30" title="ingrese su Edad" required>
+                        <input type="number" name = "edad" class="form-control" min="18" max="29" title="ingrese su Edad" required>
                     </div>
                 </div>
                 <div class="col">
@@ -107,21 +108,25 @@
                 <div class="col">
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Ingrese nueva contraseña:</label>
-                        <input type="password" name="contra" class="form-control" id="exampleInputPassword1">
+                        <input type="password" name="contra" class="form-control" id="exampleInputPassword1" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-3">
                         <label for="exampleInputPassword2" class="form-label">Confirmar nueva contraseña:</label>
-                        <input type="password" name="copia"class="form-control" id="exampleInputPassword2">
+                        <input type="password" name="copia"class="form-control" id="exampleInputPassword2" required>
                     </div>
                 </div>
-                <script>
-
-                </script>
             </div>
         </div>
-        <div class="btn-container">
+        <%if (session.getAttribute("indicador2").equals("error")){%>
+        </br>
+        <div class="text-danger nb-2">
+            Existe error en alguno de los campos rellenados!!!
+        </div>
+        <%session.removeAttribute("indicador2");%>
+        <%}%>
+        <div class="btn-container" id="divcont">
             <button type="submit" class="btn btn-success" style="width: 280px;" >Continuar</button>
         </div>
 

@@ -14,14 +14,21 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher;
         String logout = request.getParameter("finish");
-        if(logout == null){
-            requestDispatcher = request.getRequestDispatcher("index.jsp");
-            requestDispatcher.forward(request,response);
+
+        if(logout == null) {
+                  Usuario u = (Usuario) request.getSession().getAttribute("usuarioSesion");
+                if(u!=null && u.getId()!=0){
+                    requestDispatcher = request.getRequestDispatcher("Menu.jsp");
+                    requestDispatcher.forward(request,response);
+                }else{
+                    requestDispatcher = request.getRequestDispatcher("index.jsp");
+                    requestDispatcher.forward(request,response);
+                }
         }else{
             if(logout.equals("yes")){
                 HttpSession session = request.getSession();
                 session.invalidate();
-                response.sendRedirect(request.getContextPath() + "/MenuSinLoginServlet");
+                response.sendRedirect(request.getContextPath() + "/IndexServlet");
             }else{
 
                 requestDispatcher = request.getRequestDispatcher("index.jsp");
@@ -43,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 
             session.setAttribute("usuarioSesion",usuario);
             session.setMaxInactiveInterval(60*60);
-            response.sendRedirect(request.getContextPath()+"/MenuServlet");
+            response.sendRedirect(request.getContextPath()+"/ViajeServlet");
 
 
         }else{
