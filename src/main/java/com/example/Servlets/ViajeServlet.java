@@ -43,74 +43,47 @@ public class ViajeServlet extends HttpServlet {
         String action = request.getParameter("a") == null ? "listar" : request.getParameter("a");
         ViajeDao viajeDao = new ViajeDao();
         Usuario u = (Usuario) request.getSession().getAttribute("usuarioSesion");
-        if(u!=null && u.getId()!=0){
-            switch(action){
-                case "buscar"->{
+        if (u != null && u.getId() != 0) {
+            switch (action) {
+                case "buscar" -> {
                     String textoBuscar = request.getParameter("textoABuscar");
-                    request.setAttribute("listaVuelos",viajeDao.BuscarPorCiudad(String.valueOf(u.getId()),textoBuscar));
-                    request.setAttribute("gastoTotal",viajeDao.calcularGasto(String.valueOf(u.getId())));
+                    request.setAttribute("listaVuelos", viajeDao.BuscarPorCiudad(String.valueOf(u.getId()), textoBuscar));
+                    request.setAttribute("gastoTotal", viajeDao.calcularGasto(String.valueOf(u.getId())));
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher("Menu.jsp");
                     requestDispatcher.forward(request, response);
                 }
-                case"crear"->{
+                case "crear" -> {
                     String fecha = request.getParameter("fecha");
                     String origen = request.getParameter("origen");
                     String destino = request.getParameter("destino");
                     String empresaSeguro = request.getParameter("seguro");
                     String boletos = request.getParameter("boletos");
                     String costo = request.getParameter("costo");
-                    viajeDao.crearVuelo(String.valueOf(u.getId()),fecha,origen,destino,empresaSeguro,boletos,costo);
+                    viajeDao.crearVuelo(String.valueOf(u.getId()), fecha, origen, destino, empresaSeguro, boletos, costo);
                     response.sendRedirect(request.getContextPath() + "/ViajeServlet");
 
-<<<<<<< HEAD
+
                 }
-                case"editar"->{
-                    String id =request.getParameter("viajeId");
+                case "editar" -> {
+                    String id = request.getParameter("viajeId");
                     String fecha = request.getParameter("fecha");
                     String origen = request.getParameter("origen");
                     String destino = request.getParameter("destino");
                     String empresaSeguro = request.getParameter("seguro");
                     String boletos = request.getParameter("boletos");
                     String costo = request.getParameter("costo");
-                    viajeDao.crearVuelo(String.valueOf(u.getId()),fecha,origen,destino,empresaSeguro,boletos,costo);
-                    response.sendRedirect(request.getContextPath() + "/ViajeServlet");
-=======
-        switch(action){
-            case "buscar"->{
-                String textoBuscar = request.getParameter("textoABuscar");
-                request.setAttribute("listaVuelos",viajeDao.BuscarPorCiudad("1",textoBuscar));
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("Menu.jsp");
-                requestDispatcher.forward(request, response);
-            }
-            case"crear"->{
-                String fecha = request.getParameter("fecha");
-                String origen = request.getParameter("origen");
-                String destino = request.getParameter("destino");
-                String empresaSeguro = request.getParameter("seguro");
-                String boletos = request.getParameter("boletos");
-                String costo = request.getParameter("costo");
-                viajeDao.crearVuelo("1",fecha,origen,destino,empresaSeguro,boletos,costo);
-                response.sendRedirect(request.getContextPath() + "/ViajeServlet");
+                    viajeDao.editarVuelo(id,fecha, origen, destino,empresaSeguro,boletos,costo);
 
-            }
-            case"editar"->{
-                String id =request.getParameter("viajeId");
-                String fecha = request.getParameter("fecha");
-                String origen = request.getParameter("origen");
-                String destino = request.getParameter("destino");
-                String empresaSeguro = request.getParameter("seguro");
-                String boletos = request.getParameter("boletos");
-                String costo = request.getParameter("costo");
-                viajeDao.editarVuelo(id,fecha, origen, destino,empresaSeguro,boletos,costo);
-                response.sendRedirect(request.getContextPath() + "/ViajeServlet");
->>>>>>> ac2706cad33446ed6066e2f50874ee7b124566e8
+                    response.sendRedirect(request.getContextPath() + "/ViajeServlet");
+
 
                 }
             }
         }else{
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
-            requestDispatcher.forward(request, response);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+                requestDispatcher.forward(request, response);
+            }
+
         }
 
     }
-}
